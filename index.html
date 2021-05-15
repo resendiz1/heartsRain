@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Start your project here-->  
+<div class="container mt-5">
+  <div class="row mt-5 justify-content-center" >
+    <div class="col-8 shadow-1-strong mt-5  text-white">
+      <br>
+      <br>
+      <br>
+      <h1 class="font-weight-bold">Nombre  de la chica que te gusta</h1>
+    </div>
+  </div>
+</div>
+  <!-- End your project here-->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript">
+    var num = 30;
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+
+var dirx = [];
+var diry = [];
+
+for (i = 0; i < num; i++) {
+  //Crear corazon
+  let heart = document.createElement("DIV");
+  heart.className = "heart  text-center";
+  document.body.appendChild(heart);
+  //Asignar tamaño       
+  let tam = Math.floor((Math.random() * 20) + 15);
+  heart.style.width = tam + "px";
+  heart.style.height = tam + "px";
+  //Asignar posicion inicial
+  let posy = Math.floor((Math.random() * 0.1 * h) + 0.8 * h);
+  heart.style.top = posy + "px";
+  let posx = Math.floor((Math.random() * 0.8 * w) + 0.1 * h);
+  heart.style.left = posx + "px";
+  //Crear vector direccion y id
+  heart.id = "h" + i;
+  diry[i] = Math.floor((Math.random() * 5) - 10);
+  dirx[i] = Math.floor((Math.random() * 10) - 5);
+  //Asignar evento
+  heart.setAttribute("onclick","deleteheart(this)")
+}
+
+window.requestAnimationFrame(move);
+setInterval(function() {
+  move()
+}, 40);
+
+function move(){
+  
+  for(i=0;i<num;i++){
+    //Seleccion de corazon
+    let heart = document.getElementById("h"+i);
+    //Aumento de coordenadas
+    let y =  parseInt(heart.style.top) + diry[i];
+    let x =  parseInt(heart.style.left) + dirx[i];
+    //Reinicio de coordenadas
+    if (x > 0.8*w) { x = 0.2*w;}
+    if (x < 0.2*w) { x = 0.8*w;}
+    if (y < 0.2*h) { y = 0.8*h;}
+    if (y > 0.8*h) { y = 0.2*w;}
+    //Asigmnacion de coordenadas
+    heart.style.top = y + "px";
+    heart.style.left = x + "px";
+  }
+}
+
+function deleteheart(element){
+  element.style.display = "none";
+}
+  </script>
+
+</body>
+</html>
