@@ -1,5 +1,5 @@
 body{
-    background-color:darkred;
+    background-color:rgb(70, 53, 53);
 }
 
 .heart {
@@ -19,7 +19,7 @@ body{
   }
   
   .heart::before {
-    top: -50%;
+    top: -40%;
     left: 0;
   }
   .heart::after {
